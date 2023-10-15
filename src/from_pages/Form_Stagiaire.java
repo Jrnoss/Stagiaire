@@ -38,291 +38,331 @@ public class Form_Stagiaire extends javax.swing.JInternalFrame {
         stagiaire_tel = new javax.swing.JLabel();
         stagiaire_email = new javax.swing.JLabel();
         stagiaire_specialite = new javax.swing.JLabel();
-        txt_id = new javax.swing.JTextField();
-        txt_nom = new javax.swing.JTextField();
-        txt_tel = new javax.swing.JTextField();
-        txt_email = new javax.swing.JTextField();
-        txt_provenance = new javax.swing.JPasswordField();
-        btn_modifier = new javax.swing.JButton();
-        btn_supprimer = new javax.swing.JButton();
-        btn_save2 = new javax.swing.JButton();
         destination = new javax.swing.JLabel();
-        txt_specialite = new javax.swing.JPasswordField();
-        btn_recherche = new javax.swing.JButton();
-        stagiaire_id = new javax.swing.JLabel();
-        txt_prenom = new javax.swing.JTextField();
         provenance2 = new javax.swing.JLabel();
-        txt_destination = new javax.swing.JPasswordField();
         stagiaire_statut = new javax.swing.JLabel();
-        txt_statut = new javax.swing.JPasswordField();
-        txt_sexe = new javax.swing.JPasswordField();
         stagiaire_statut1 = new javax.swing.JLabel();
+        txt_prenom = new javax.swing.JTextField();
+        text_nom = new javax.swing.JTextField();
+        txt_sexe = new javax.swing.JComboBox<>();
+        txt_telephone = new javax.swing.JFormattedTextField();
+        txt_email = new javax.swing.JTextField();
+        txt_profession = new javax.swing.JComboBox<>();
+        txt_formation = new javax.swing.JTextField();
+        txt_ecole = new javax.swing.JTextField();
+        txt_competance = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btn_save = new javax.swing.JButton();
+        btn_edit = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        list_stagiaire = new javax.swing.JTable();
+        liste_stagiaires = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txt_search = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
-
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
+        stagiaire_prenom.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         stagiaire_prenom.setText("Prénom");
 
+        stagiaire_nom.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         stagiaire_nom.setText("Nom");
 
+        stagiaire_tel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         stagiaire_tel.setText("Téléphone");
 
+        stagiaire_email.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         stagiaire_email.setText("Email");
 
-        stagiaire_specialite.setText("Spécialité");
+        stagiaire_specialite.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        stagiaire_specialite.setText("Formation");
 
-        txt_nom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nomActionPerformed(evt);
-            }
-        });
+        destination.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        destination.setText("Compétance");
 
-        txt_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_emailActionPerformed(evt);
-            }
-        });
+        provenance2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        provenance2.setText("Ecole/Institut");
 
-        txt_provenance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_provenanceActionPerformed(evt);
-            }
-        });
+        stagiaire_statut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        stagiaire_statut.setText("Profession");
 
-        btn_modifier.setText("Modifier");
-        btn_modifier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modifierActionPerformed(evt);
-            }
-        });
-
-        btn_supprimer.setText("Supprimer");
-        btn_supprimer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_supprimerActionPerformed(evt);
-            }
-        });
-
-        btn_save2.setText("Save");
-        btn_save2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_save2ActionPerformed(evt);
-            }
-        });
-
-        destination.setText("Destination");
-
-        txt_specialite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_specialiteActionPerformed(evt);
-            }
-        });
-
-        btn_recherche.setText("Recherche");
-        btn_recherche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_rechercheActionPerformed(evt);
-            }
-        });
-
-        stagiaire_id.setText("ID");
-
-        provenance2.setText("Provenance");
-
-        txt_destination.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_destinationActionPerformed(evt);
-            }
-        });
-
-        stagiaire_statut.setText("Statut");
-
-        txt_statut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_statutActionPerformed(evt);
-            }
-        });
-
-        txt_sexe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_sexeActionPerformed(evt);
-            }
-        });
-
+        stagiaire_statut1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         stagiaire_statut1.setText("Sexe");
+
+        txt_prenom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_prenom.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        txt_prenom.setSize(new java.awt.Dimension(84, 30));
+
+        text_nom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        text_nom.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+
+        txt_sexe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_sexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "Masculin", "Feminin" }));
+        txt_sexe.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+
+        txt_telephone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        try {
+            txt_telephone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(+###) ## ## ## ##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txt_telephone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        txt_email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_email.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+
+        txt_profession.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_profession.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txt_profession.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+
+        txt_formation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_formation.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+
+        txt_ecole.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_ecole.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        txt_competance.setViewportView(jTextArea1);
+
+        btn_save.setBackground(new java.awt.Color(0, 51, 255));
+        btn_save.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_save.setForeground(new java.awt.Color(255, 255, 255));
+        btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/save_16.png"))); // NOI18N
+        btn_save.setText("Save");
+        btn_save.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_save.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        btn_edit.setBackground(new java.awt.Color(0, 153, 51));
+        btn_edit.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_edit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/database_view_16.png"))); // NOI18N
+        btn_edit.setText("Modifier");
+        btn_edit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_edit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        btn_delete.setBackground(new java.awt.Color(204, 0, 0));
+        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_delete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete_16.png"))); // NOI18N
+        btn_delete.setText("Supprimer");
+        btn_delete.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_delete.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addComponent(stagiaire_prenom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(stagiaire_email, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(stagiaire_tel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(provenance2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_ecole, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(stagiaire_statut1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stagiaire_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btn_save2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(btn_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 233, Short.MAX_VALUE))
+                                .addComponent(text_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(stagiaire_statut, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(stagiaire_tel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_id, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                                    .addComponent(stagiaire_id, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_tel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(stagiaire_prenom, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                                                    .addComponent(txt_prenom))
-                                                .addGap(34, 34, 34)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(provenance2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txt_provenance, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(stagiaire_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(stagiaire_email, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txt_specialite)
-                                            .addComponent(stagiaire_specialite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txt_destination)
-                                            .addComponent(destination, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))
-                                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(stagiaire_statut, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_statut, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(stagiaire_statut1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_sexe, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                                .addComponent(txt_sexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(stagiaire_specialite, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_profession, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_formation, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(destination, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(txt_competance, javax.swing.GroupLayout.PREFERRED_SIZE, 834, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_edit)
+                .addGap(18, 18, 18)
+                .addComponent(btn_delete)
+                .addGap(273, 273, 273))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {text_nom, txt_ecole, txt_email, txt_formation, txt_prenom, txt_profession, txt_sexe, txt_telephone});
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {destination, stagiaire_nom, stagiaire_prenom, stagiaire_statut1, stagiaire_tel});
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {provenance2, stagiaire_email, stagiaire_specialite, stagiaire_statut});
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_delete, btn_edit, btn_save});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stagiaire_prenom)
+                    .addComponent(stagiaire_email)
+                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stagiaire_nom)
+                    .addComponent(text_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stagiaire_statut)
+                    .addComponent(txt_profession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stagiaire_statut1)
+                    .addComponent(txt_sexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stagiaire_specialite)
+                    .addComponent(txt_formation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stagiaire_tel)
+                    .addComponent(txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(provenance2)
+                    .addComponent(txt_ecole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(stagiaire_id, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(stagiaire_nom)
-                                .addComponent(stagiaire_specialite)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_specialite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(stagiaire_prenom)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(4, 4, 4)
-                .addComponent(stagiaire_statut)
+                    .addComponent(destination)
+                    .addComponent(txt_competance, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stagiaire_email)
-                    .addComponent(stagiaire_tel)
-                    .addComponent(provenance2)
-                    .addComponent(destination)
-                    .addComponent(txt_statut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_tel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_provenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_destination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(stagiaire_statut1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(txt_sexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_save2)
-                    .addComponent(btn_modifier)
-                    .addComponent(btn_supprimer)
-                    .addComponent(btn_recherche))
-                .addGap(41, 41, 41))
+                    .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_edit)
+                    .addComponent(btn_delete))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {stagiaire_email, stagiaire_prenom, stagiaire_specialite, stagiaire_tel});
 
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {text_nom, txt_ecole, txt_email, txt_formation, txt_prenom, txt_profession, txt_sexe, txt_telephone});
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_delete, btn_edit, btn_save});
+
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
-        list_stagiaire.setModel(new javax.swing.table.DefaultTableModel(
+        liste_stagiaires.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        liste_stagiaires.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "N°", "Prénom", "Nom", "Téléphone", "Email", "Provenance", "Specialité", "Destination"
+                "Matricule", "Nom complet", "Sexe", "Téléphone", "Email", "Profession", "Formation", "Prenom", "Nom", "Competance", "Id"
             }
         ));
-        jScrollPane1.setViewportView(list_stagiaire);
+        liste_stagiaires.setGridColor(new java.awt.Color(102, 102, 102));
+        liste_stagiaires.setRowMargin(2);
+        liste_stagiaires.setSelectionBackground(new java.awt.Color(0, 153, 255));
+        liste_stagiaires.setShowGrid(true);
+        jScrollPane1.setViewportView(liste_stagiaires);
+        if (liste_stagiaires.getColumnModel().getColumnCount() > 0) {
+            liste_stagiaires.getColumnModel().getColumn(7).setMinWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(7).setPreferredWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(7).setMaxWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(8).setMinWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(8).setPreferredWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(8).setMaxWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(9).setMinWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(9).setPreferredWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(9).setMaxWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(10).setMinWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(10).setPreferredWidth(0);
+            liste_stagiaires.getColumnModel().getColumn(10).setMaxWidth(0);
+        }
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Réchercher :");
+
+        txt_search.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_search.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("GESTION DES STAGIAIRES");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 76, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -331,9 +371,9 @@ public class Form_Stagiaire extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(23, 23, 23)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -351,98 +391,38 @@ public class Form_Stagiaire extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
-        StagiaireDao stgdao = new StagiaireDao();
-        String prenom = txt_prenom.getText();
-        String nom = txt_nom.getText();
-        String sexe = txt_sexe.getText();
-        String provenance = txt_provenance.getText();
-        String specialite = txt_specialite.getText();
-        String tel = txt_tel.getText();
-        String email = txt_email.getText();
-        String statut = txt_statut.getText();
-        String destination = txt_destination.getText();
-        
-        if (prenom.equals("") || nom.equals("") || provenance.equals("") || specialite.equals("") ||tel.equals("") || email.equals("") || statut.equals("")|| destination.equals("")) {
-            JOptionPane.showMessageDialog(this, "Reseigner les champs", "Erreur", JOptionPane.ERROR_MESSAGE);
-        } else {
-            Stagiaire stg = new Stagiaire(prenom, nom,sexe, provenance, specialite, tel, email, statut, destination);
-            stgdao.add(stg);
-            JOptionPane.showMessageDialog(this, "Reseigner les champs");
-        }
-    }//GEN-LAST:event_btn_modifierActionPerformed
-
-    private void btn_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_supprimerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_supprimerActionPerformed
-
-    private void btn_save2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_save2ActionPerformed
-
-    private void txt_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nomActionPerformed
-
-    private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_emailActionPerformed
-
-    private void txt_provenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_provenanceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_provenanceActionPerformed
-
-    private void btn_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rechercheActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_rechercheActionPerformed
-
-    private void txt_specialiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_specialiteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_specialiteActionPerformed
-
-    private void txt_destinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_destinationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_destinationActionPerformed
-
-    private void txt_statutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_statutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_statutActionPerformed
-
-    private void txt_sexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sexeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_sexeActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_modifier;
-    private javax.swing.JButton btn_recherche;
-    private javax.swing.JButton btn_save2;
-    private javax.swing.JButton btn_supprimer;
+    private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_edit;
+    private javax.swing.JButton btn_save;
     private javax.swing.JLabel destination;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable list_stagiaire;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTable liste_stagiaires;
     private javax.swing.JLabel provenance2;
     private javax.swing.JLabel stagiaire_email;
-    private javax.swing.JLabel stagiaire_id;
     private javax.swing.JLabel stagiaire_nom;
     private javax.swing.JLabel stagiaire_prenom;
     private javax.swing.JLabel stagiaire_specialite;
     private javax.swing.JLabel stagiaire_statut;
     private javax.swing.JLabel stagiaire_statut1;
     private javax.swing.JLabel stagiaire_tel;
-    private javax.swing.JPasswordField txt_destination;
+    private javax.swing.JTextField text_nom;
+    private javax.swing.JScrollPane txt_competance;
+    private javax.swing.JTextField txt_ecole;
     private javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_nom;
+    private javax.swing.JTextField txt_formation;
     private javax.swing.JTextField txt_prenom;
-    private javax.swing.JPasswordField txt_provenance;
-    private javax.swing.JPasswordField txt_sexe;
-    private javax.swing.JPasswordField txt_specialite;
-    private javax.swing.JPasswordField txt_statut;
-    private javax.swing.JTextField txt_tel;
+    private javax.swing.JComboBox<String> txt_profession;
+    private javax.swing.JTextField txt_search;
+    private javax.swing.JComboBox<String> txt_sexe;
+    private javax.swing.JFormattedTextField txt_telephone;
     // End of variables declaration//GEN-END:variables
 }

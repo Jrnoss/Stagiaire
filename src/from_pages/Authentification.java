@@ -207,7 +207,7 @@ public class Authentification extends javax.swing.JInternalFrame{
             }
     else if (email.equals("admin")&& password.equals("1234")){
         Authentification.super.dispose();
-        new Menu().setVisible(true);
+        new Applis_Stagiaire().setVisible(true);
     }
     else{
         JOptionPane.showMessageDialog(null,"Mot de passe ou \n NOm utilisateur sont incorrects ");

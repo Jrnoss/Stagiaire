@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/AppStagiaire/src/dao/EncadreurDao.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/AppStagiaire/src/dao/ConnectDB.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/AppStagiaire/src/dao/StagiaireDao.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/AppStagiaire/src/dao/UtilisateurDao.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/AppStagiaire/src/dao/StageDao.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/AppStagiaire/src/dao/TuteurDao.java</file>
+            <file>file:/Users/mackbook/NetBeansProjects/Stagiaire/src/from_pages/Form_Stage.java</file>
+            <file>file:/Users/mackbook/NetBeansProjects/Stagiaire/src/from_pages/Form_Stagiaire.java</file>
+            <file>file:/Users/mackbook/NetBeansProjects/Stagiaire/src/from_pages/Form_Utilisateur.java</file>
+            <file>file:/Users/mackbook/NetBeansProjects/Stagiaire/src/from_pages/Applis_Stagiaire.java</file>
         </group>
     </open-files>
 </project-private>
