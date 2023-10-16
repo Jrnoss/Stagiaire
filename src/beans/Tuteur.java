@@ -11,8 +11,7 @@ package beans;
  */
 public class Tuteur {
     private Long id;
-    private String nom;
-    private String prenom;
+    private String nomcomplet;
     private String adresse;
     private String telephone;
     private String statut;
@@ -20,18 +19,16 @@ public class Tuteur {
     public Tuteur() {
     }
 
-    public Tuteur(String nom, String prenom, String adresse, String telephone, String statut) {
-        this.nom = nom;
-        this.prenom = prenom;
+    public Tuteur(String nomcomplet, String adresse, String telephone, String statut) {
+        this.nomcomplet = nomcomplet;
         this.adresse = adresse;
         this.telephone = telephone;
         this.statut = statut;
     }
 
-    public Tuteur(Long id, String nom, String prenom, String adresse, String telephone, String statut) {
+    public Tuteur(Long id, String nomcomplet, String adresse, String telephone, String statut) {
         this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
+        this.nomcomplet = nomcomplet;
         this.adresse = adresse;
         this.telephone = telephone;
         this.statut = statut;
@@ -45,20 +42,12 @@ public class Tuteur {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomcomplet() {
+        return nomcomplet;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setNomcomplet(String nomcomplet) {
+        this.nomcomplet = nomcomplet;
     }
 
     public String getAdresse() {
@@ -87,7 +76,7 @@ public class Tuteur {
 
     @Override
     public String toString() {
-        return "Tuteur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", telephone=" + telephone + ", statut=" + statut + '}';
+        return "Tuteur{" + "id=" + id + ", nomcomplet=" + nomcomplet  + ", adresse=" + adresse + ", telephone=" + telephone + ", statut=" + statut + '}';
     }
     
 }
