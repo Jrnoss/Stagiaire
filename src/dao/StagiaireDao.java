@@ -46,7 +46,19 @@ public class StagiaireDao extends DAO<Stagiaire> {
 
     @Override
     public void add(Stagiaire obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = (PreparedStatement)this.connect.prepareStatement("INSERT INTO Stagiaire (prenom,nom,provenance,telephone,specialite,email,statut,destination ");
+            ps.setString(1, obj.getPrenom());
+            ps.setString(2, obj.getNom());
+            ps.setString(3, obj.getProvenance());
+            ps.setString(4, obj.getTel());
+            ps.setString(5, obj.getSexe());
+            ps.setString(6, obj.getEmail());
+            ps.setString(7, obj.getStatut());
+            ps.execute();
+        } catch (Exception ex) {
+            Logger.getLogger(StagiaireDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

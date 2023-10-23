@@ -31,46 +31,48 @@ public class Authentification extends javax.swing.JInternalFrame{
 
         corps = new javax.swing.JPanel();
         case_head = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        authentification = new javax.swing.JLabel();
         case_main = new javax.swing.JPanel();
         champ_email = new javax.swing.JLabel();
         champ_password = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
-        txt_password = new javax.swing.JPasswordField();
         btn_oubli = new javax.swing.JButton();
         btn_login = new javax.swing.JButton();
+        txt_password = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        case_head.setBackground(new java.awt.Color(0, 153, 153));
+        case_head.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Login Form"); // NOI18N
+        authentification.setBackground(new java.awt.Color(255, 255, 255));
+        authentification.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        authentification.setText("GESTION DES AUTHENTIFICATION"); // NOI18N
 
         javax.swing.GroupLayout case_headLayout = new javax.swing.GroupLayout(case_head);
         case_head.setLayout(case_headLayout);
         case_headLayout.setHorizontalGroup(
             case_headLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(case_headLayout.createSequentialGroup()
-                .addGap(413, 413, 413)
-                .addComponent(jLabel1)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addGap(261, 261, 261)
+                .addComponent(authentification, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         case_headLayout.setVerticalGroup(
             case_headLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, case_headLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(authentification, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        case_main.setBackground(new java.awt.Color(0, 153, 153));
+        case_main.setBackground(new java.awt.Color(204, 204, 204));
 
-        champ_email.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        champ_email.setForeground(new java.awt.Color(255, 255, 255));
+        champ_email.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        champ_email.setForeground(new java.awt.Color(0, 0, 153));
         champ_email.setText("Username");
 
-        champ_password.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        champ_password.setForeground(new java.awt.Color(255, 255, 255));
+        champ_password.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        champ_password.setForeground(new java.awt.Color(0, 0, 153));
         champ_password.setText("Password");
 
         txt_email.addActionListener(new java.awt.event.ActionListener() {
@@ -79,15 +81,8 @@ public class Authentification extends javax.swing.JInternalFrame{
             }
         });
 
-        txt_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_passwordActionPerformed(evt);
-            }
-        });
-
-        btn_oubli.setBackground(new java.awt.Color(255, 255, 255));
-        btn_oubli.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btn_oubli.setForeground(new java.awt.Color(0, 153, 153));
+        btn_oubli.setBackground(new java.awt.Color(153, 0, 0));
+        btn_oubli.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btn_oubli.setText("Cancel");
         btn_oubli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,9 +90,8 @@ public class Authentification extends javax.swing.JInternalFrame{
             }
         });
 
-        btn_login.setBackground(new java.awt.Color(255, 255, 255));
-        btn_login.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btn_login.setForeground(new java.awt.Color(0, 153, 153));
+        btn_login.setBackground(new java.awt.Color(153, 0, 0));
+        btn_login.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btn_login.setText("Login");
         btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,6 +104,8 @@ public class Authentification extends javax.swing.JInternalFrame{
             }
         });
 
+        txt_password.setText("jPasswordField1");
+
         javax.swing.GroupLayout case_mainLayout = new javax.swing.GroupLayout(case_main);
         case_main.setLayout(case_mainLayout);
         case_mainLayout.setHorizontalGroup(
@@ -118,17 +114,17 @@ public class Authentification extends javax.swing.JInternalFrame{
                 .addGroup(case_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(case_mainLayout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addGroup(case_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(champ_email, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(champ_password, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(93, 93, 93)
                         .addGroup(case_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
-                            .addComponent(txt_password)))
+                            .addComponent(champ_email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(champ_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(case_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_email)
+                            .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)))
                     .addGroup(case_mainLayout.createSequentialGroup()
-                        .addGap(215, 215, 215)
+                        .addGap(292, 292, 292)
                         .addComponent(btn_oubli, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(186, Short.MAX_VALUE))
         );
@@ -137,17 +133,20 @@ public class Authentification extends javax.swing.JInternalFrame{
             .addGroup(case_mainLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addGroup(case_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(champ_email, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(champ_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(case_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_password, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGroup(case_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(case_mainLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(champ_password, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, case_mainLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(55, 55, 55)
                 .addGroup(case_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_oubli)
                     .addComponent(btn_login))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout corpsLayout = new javax.swing.GroupLayout(corps);
@@ -157,31 +156,26 @@ public class Authentification extends javax.swing.JInternalFrame{
             .addGroup(corpsLayout.createSequentialGroup()
                 .addGroup(corpsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(corpsLayout.createSequentialGroup()
-                        .addGap(306, 306, 306)
+                        .addContainerGap()
                         .addComponent(case_head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(corpsLayout.createSequentialGroup()
-                        .addGap(442, 442, 442)
+                        .addGap(46, 46, 46)
                         .addComponent(case_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(2562, Short.MAX_VALUE))
+                .addContainerGap(3034, Short.MAX_VALUE))
         );
         corpsLayout.setVerticalGroup(
             corpsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(corpsLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addComponent(case_head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(case_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
 
         getContentPane().add(corps, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_passwordActionPerformed
 
     private void btn_oubliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_oubliActionPerformed
 
@@ -221,6 +215,7 @@ public class Authentification extends javax.swing.JInternalFrame{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel authentification;
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_oubli;
     private javax.swing.JPanel case_head;
@@ -228,7 +223,6 @@ public class Authentification extends javax.swing.JInternalFrame{
     private javax.swing.JLabel champ_email;
     private javax.swing.JLabel champ_password;
     private javax.swing.JPanel corps;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txt_email;
     private javax.swing.JPasswordField txt_password;
     // End of variables declaration//GEN-END:variables

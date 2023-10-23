@@ -43,7 +43,20 @@ public class EncadreurDao extends DAO<Encadreur>{
 
     @Override
     public void add(Encadreur obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = (PreparedStatement)this.connect.prepareStatement("INSERT INTO Encadreur (nom,prenom,sexe,telephone,adresse,email,statut) VALUES(?,?,?,?,?,?,?");
+            ps.setString(1, obj.getPreom());
+            ps.setString(2, obj.getNom());
+            ps.setString(4, obj.getSexe());
+            ps.setString(3, obj.getTel());
+            ps.setString(6, obj.getEmail());
+            ps.setString(7, obj.getStatut());
+            ps.execute();
+           
+                    
+        } catch (Exception ex) {
+            Logger.getLogger(EncadreurDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

@@ -34,8 +34,8 @@ public class Form_Stage extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        date_debut = new javax.swing.JLabel();
+        date_fin = new javax.swing.JLabel();
         txt_theme = new javax.swing.JTextField();
         txt_typeStage = new javax.swing.JComboBox<>();
         txt_document = new javax.swing.JTextField();
@@ -75,27 +75,27 @@ public class Form_Stage extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Thématique");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Type de stage");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Document");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Date debut");
+        date_debut.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        date_debut.setText("Date debut");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Date fin");
+        date_fin.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        date_fin.setText("Date de fin");
 
         txt_theme.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_theme.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         txt_theme.setPreferredSize(new java.awt.Dimension(14, 28));
 
         txt_typeStage.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_typeStage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txt_typeStage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfectionnement", "Professionnel", "Fin d'étude                                                                                                                                                                                                                                                                                                  ", " " }));
         txt_typeStage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
         txt_document.setEditable(false);
@@ -161,8 +161,8 @@ public class Form_Stage extends javax.swing.JInternalFrame {
                             .addComponent(txt_typeStage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(date_debut)
+                            .addComponent(date_fin))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_dateDebut, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,14 +179,14 @@ public class Form_Stage extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btn_delete)
                         .addGap(158, 158, 158)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4});
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_delete, btn_edit, btn_save});
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel5, jLabel6});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {date_debut, date_fin});
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txt_dateDebut, txt_dateFin, txt_typeStage});
 
@@ -203,7 +203,7 @@ public class Form_Stage extends javax.swing.JInternalFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txt_typeStage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(date_debut))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -217,13 +217,13 @@ public class Form_Stage extends javax.swing.JInternalFrame {
                             .addComponent(txt_dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(jLabel6)))))
+                                .addComponent(date_fin)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_edit)
                     .addComponent(btn_delete))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_open, txt_dateDebut, txt_dateFin, txt_document, txt_theme, txt_typeStage});
@@ -246,7 +246,6 @@ public class Form_Stage extends javax.swing.JInternalFrame {
         liste_stages.setGridColor(new java.awt.Color(102, 102, 102));
         liste_stages.setRowMargin(2);
         liste_stages.setSelectionBackground(new java.awt.Color(0, 153, 255));
-        liste_stages.setShowGrid(true);
         jScrollPane1.setViewportView(liste_stages);
         if (liste_stages.getColumnModel().getColumnCount() > 0) {
             liste_stages.getColumnModel().getColumn(0).setMinWidth(65);
@@ -333,12 +332,12 @@ public class Form_Stage extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_open;
     private javax.swing.JButton btn_save;
+    private javax.swing.JLabel date_debut;
+    private javax.swing.JLabel date_fin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

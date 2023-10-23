@@ -45,7 +45,17 @@ public class UtilisateurDao extends DAO<Utilisateur>{
 
     @Override
     public void add(Utilisateur obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = (PreparedStatement)this.connect.prepareStatement("INSERT INTO Utilisateur (prenom, nom, telephone, email, passeword) VALUES (?,?,?,?,?");
+            ps.setString(1, obj.getNom());
+            ps.setString(2, obj.getPrenom());
+            ps.setString(3, obj.getTelephone());
+            ps.setString(4, obj.getEmail());
+            ps.setString(5, obj.getPassword());
+            ps.execute();
+        } catch (Exception ex) {
+            Logger.getLogger(UtilisateurDao.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     @Override

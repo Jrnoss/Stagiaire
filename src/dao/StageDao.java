@@ -30,6 +30,7 @@ public class StageDao extends DAO<Stage>{
                 st.setTheme(rs.getString("theme"));
                 st.setType(rs.getString("type"));
                 st.setDocument(rs.getString("document"));
+                st.setDate_fin(rs.getString("date_fin"));
             }
             
         } catch (Exception ex) {
@@ -39,7 +40,18 @@ public class StageDao extends DAO<Stage>{
 
     @Override
     public void add(Stage obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = (PreparedStatement)this.connect.prepareStatement("INSERT INTO Stage (date_debut,theme,type,document,date_fin) VALUES (?,?,?,?,?");
+            ps.setString(1, obj.getDate_debut());
+            ps.setString(2, obj.getTheme());
+            ps.setString(3, obj.getDocument());
+            ps.setString(4, obj.getDate_fin());
+            ps.execute();
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(StageDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

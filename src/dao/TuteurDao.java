@@ -43,8 +43,8 @@ public class TuteurDao extends DAO<Tuteur> {
         try {
             PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO Stagiaire (nomcomplet, telephone, adresse, statut)VALUES(?,?,?,?)");
             ps.setString(1, obj.getNomcomplet());
-            ps.setString(2, obj.getTelephone());
-            ps.setString(3, obj.getAdresse());
+            ps.setString(2, obj.getAdresse());
+            ps.setString(3, obj.getTelephone());
             ps.setString(4, obj.getStatut());
             ps.execute();
 
@@ -59,8 +59,9 @@ public class TuteurDao extends DAO<Tuteur> {
             PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("update Stagiaire set nomcomplet=?,"
                     + "telephone=?, adresse=?, statut=?, where id=" + id);
             ps.setString(1, obj.getNomcomplet());
-            ps.setString(2, obj.getTelephone());
-            ps.setString(3, obj.getStatut());
+            ps.setString(2, obj.getAdresse());
+            ps.setString(3, obj.getTelephone());
+            ps.setString(4, obj.getStatut());
             ps.execute();
 
         } catch (Exception ex) {
@@ -87,8 +88,8 @@ public class TuteurDao extends DAO<Tuteur> {
             ResultSet rs = this.connect.createStatement().executeQuery("select * from Tuteur order by asc");
             while (rs.next()) {
                 tt.setNomcomplet(rs.getString("nomcomplet"));
-                tt.setTelephone(rs.getString("telephone"));
                 tt.setAdresse(rs.getString("adresse"));
+                tt.setTelephone(rs.getString("telephone"));
                 tt.setStatut(rs.getString("statut"));
                 obj.add(tt);
                 tt = new Tuteur();
