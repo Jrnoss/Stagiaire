@@ -11,52 +11,74 @@ package beans;
  */
 public class Stagiaire {
 
-    private Long id;
-    private String nom;
+    private int id;
+    private String matricule;
     private String prenom;
+    private String nom;
     private String sexe;
-    private String tel;
-    private String provenance;
+    private String telephone;
+    private String competance;
     private String email;
-    private String specialite;
-    private String statut;
-    private String destination; 
+    private String profession;
+    private String formation;
+    private String ecole; 
+    private int id_stage;
     
 
     public Stagiaire() {
     }
 
-    public Stagiaire(String nom, String prenom,String sexe, String tel, String provenance, String email, String specialite, String statut, String destination) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.sexe = sexe;
-        this.tel = tel;
-        this.provenance = provenance;
-        this.email = email;
-        this.specialite = specialite;
-        this.statut = statut;
-        this.destination = destination;
-    }
-
-    public Stagiaire(Long id, String nom, String prenom,String sexe, String tel, String provenance, String email, String specialite, String statut, String destination) {
+    public Stagiaire(int id, String matricule, String prenom, String nom, String sexe, String telephone, String competance, String email, String profession, String formation, String ecole, int id_stage) {
         this.id = id;
-        this.nom = nom;
+        this.matricule = matricule;
         this.prenom = prenom;
+        this.nom = nom;
         this.sexe = sexe;
-        this.tel = tel;
-        this.provenance = provenance;
+        this.telephone = telephone;
+        this.competance = competance;
         this.email = email;
-        this.specialite = specialite;
-        this.statut = statut;
-        this.destination = destination;
+        this.profession = profession;
+        this.formation = formation;
+        this.ecole = ecole;
+        this.id_stage = id_stage;
     }
 
-    public Long getId() {
+    public Stagiaire(String matricule, String prenom, String nom, String sexe, String telephone, String competance, String email, String profession, String formation, String ecole, int id_stage) {
+        this.matricule = matricule;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.sexe = sexe;
+        this.telephone = telephone;
+        this.competance = competance;
+        this.email = email;
+        this.profession = profession;
+        this.formation = formation;
+        this.ecole = ecole;
+        this.id_stage = id_stage;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public String getNom() {
@@ -67,35 +89,28 @@ public class Stagiaire {
         this.nom = nom;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getSexe() {
+        return sexe;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-     public String getSexe() {
-        return prenom;
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
     }
 
-    public void setSexe(String prenom) {
-        this.prenom = prenom;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public String getTel() {
-        return tel;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public String getCompetance() {
+        return competance;
     }
 
-    public String getProvenance() {
-        return provenance;
-    }
-
-    public void setProvenance(String provenance) {
-        this.provenance = provenance;
+    public void setCompetance(String competance) {
+        this.competance = competance;
     }
 
     public String getEmail() {
@@ -106,33 +121,41 @@ public class Stagiaire {
         this.email = email;
     }
 
-    public String getSpecialite() {
-        return specialite;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setSpecialite(String specialite) {
-        this.specialite = specialite;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
-    public String getStatut() {
-        return statut;
+    public String getFormation() {
+        return formation;
     }
 
-    public void setStatut(String statut) {
-        this.statut = statut;
+    public void setFormation(String formation) {
+        this.formation = formation;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getEcole() {
+        return ecole;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setEcole(String ecole) {
+        this.ecole = ecole;
+    }
+
+    public int getId_stage() {
+        return id_stage;
+    }
+
+    public void setId_stage(int id_stage) {
+        this.id_stage = id_stage;
     }
 
     @Override
     public String toString() {
-        return "Stagiaire{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", tel=" + tel + ", provenance=" + provenance + ", email=" + email + ", specialite=" + specialite + ", statut=" + statut + ", destination=" + destination + '}';
+        return "Stagiaire{" + "id=" + id + ", matricule=" + matricule + ", prenom=" + prenom + ", nom=" + nom + ", sexe=" + sexe + ", telephone=" + telephone + ", competance=" + competance + ", email=" + email + ", profession=" + profession + ", formation=" + formation + ", ecole=" + ecole + ", id_stage=" + id_stage + '}';
     }
 
     

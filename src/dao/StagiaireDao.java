@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
  * @author DELL
@@ -25,36 +24,42 @@ public class StagiaireDao extends DAO<Stagiaire> {
     public Stagiaire find(long id) {
         Stagiaire stg = new Stagiaire();
         try {
-            ResultSet rs = this.connect.createStatement().executeQuery("select * from Stagiaire where id=" +id);
-            if(rs.next()){
-                stg.setId(rs.getLong("id"));
+            ResultSet rs = this.connect.createStatement().executeQuery("select * from stagiaire where id=" + id);
+            if (rs.next()) {
+                stg.setId(rs.getInt("id"));
+                stg.setMatricule(rs.getString("matricule"));
                 stg.setPrenom(rs.getString("prenom"));
                 stg.setNom(rs.getString("nom"));
-                stg.setProvenance(rs.getString("provenance"));
-                stg.setTel(rs.getString("telephone"));
-                stg.setSpecialite(rs.getString("specialite"));
+                stg.setSexe(rs.getString("sexe"));
+                stg.setTelephone(rs.getString("telephone"));
+                stg.setCompetance(rs.getString("competance"));
                 stg.setEmail(rs.getString("email"));
-                stg.setStatut(rs.getString("statut"));
-                stg.setDestination(rs.getString("destination"));
-                
-                 
+                stg.setProfession(rs.getString("profession"));
+                stg.setFormation(rs.getString("formation"));
+                stg.setEcole(rs.getString("ecole"));
+                stg.setId_stage(rs.getInt("stage_id"));
+
             }
         } catch (SQLException ex) {
         }
-       return stg; 
+        return stg;
     }
 
     @Override
     public void add(Stagiaire obj) {
         try {
-            PreparedStatement ps = (PreparedStatement)this.connect.prepareStatement("INSERT INTO Stagiaire (prenom,nom,provenance,telephone,specialite,email,statut,destination ");
-            ps.setString(1, obj.getPrenom());
-            ps.setString(2, obj.getNom());
-            ps.setString(3, obj.getProvenance());
-            ps.setString(4, obj.getTel());
-            ps.setString(5, obj.getSexe());
-            ps.setString(6, obj.getEmail());
-            ps.setString(7, obj.getStatut());
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO stagiaire(matricule, prenom, nom, sexe, telephone, competance, email, profession, formation, ecole, stage_id)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+            ps.setString(1, obj.getMatricule());
+            ps.setString(2, obj.getPrenom());
+            ps.setString(3, obj.getNom());
+            ps.setString(4, obj.getSexe());
+            ps.setString(5, obj.getTelephone());
+            ps.setString(6, obj.getCompetance());
+            ps.setString(7, obj.getEmail());
+            ps.setString(8, obj.getProfession());
+            ps.setString(9, obj.getFormation());
+            ps.setString(10, obj.getEcole());
+            ps.setInt(11, obj.getId_stage());
             ps.execute();
         } catch (Exception ex) {
             Logger.getLogger(StagiaireDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,19 +69,20 @@ public class StagiaireDao extends DAO<Stagiaire> {
     @Override
     public void edit(Stagiaire obj, long id) {
         try {
-             PreparedStatement ps = (PreparedStatement)this.connect.prepareStatement("update Stagiaire set nom=?, prenom=?, sexe=?,"
-                + " telephone=?,provenance=?, specialite=?,email=?,statut=?,destination=?, where id =" +id);
-             ps.setString(1, obj.getPrenom());
-             ps.setString(2, obj.getNom());
-             ps.setString(3, obj.getProvenance());
-             ps.setString(4, obj.getSexe());
-             ps.setString(5, obj.getSpecialite());
-             ps.setString(6, obj.getEmail());
-             ps.setString(7, obj.getTel());
-             ps.setString(8, obj.getStatut());
-             ps.setString(9, obj.getDestination());
-             ps.execute();
-             
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("update stagiaire set matricule=?, prenom=?, nom=?, sexe=?,"
+                    + " telephone=?, competance=?, email=?, profession=?, formation=?, ecole=?, stage_id=? where id =" + id);
+            ps.setString(1, obj.getMatricule());
+            ps.setString(2, obj.getPrenom());
+            ps.setString(3, obj.getNom());
+            ps.setString(4, obj.getSexe());
+            ps.setString(5, obj.getTelephone());
+            ps.setString(6, obj.getCompetance());
+            ps.setString(7, obj.getEmail());
+            ps.setString(8, obj.getProfession());
+            ps.setString(9, obj.getFormation());
+            ps.setString(10, obj.getEcole());
+            ps.setInt(11, obj.getId_stage());
+            ps.execute();
 
         } catch (Exception ex) {
             Logger.getLogger(StagiaireDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +92,8 @@ public class StagiaireDao extends DAO<Stagiaire> {
     @Override
     public void delete(long id) {
         try {
-            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("delete from Stagiaire where id=" + id);
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("delete from stagiaire where id=" + id);
+            ps.execute();
         } catch (Exception ex) {
             Logger.getLogger(StagiaireDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -97,26 +104,28 @@ public class StagiaireDao extends DAO<Stagiaire> {
         Stagiaire stg = new Stagiaire();
         List<Stagiaire> obj = new ArrayList<>();
         try {
-            ResultSet rs = this.connect.createStatement().executeQuery("select * from Stagiaire order by asc");
-            while(rs.next()){
+            ResultSet rs = this.connect.createStatement().executeQuery("select * from stagiaire order by matricule asc");
+            while (rs.next()) {
+                stg.setId(rs.getInt("id"));
+                stg.setMatricule(rs.getString("matricule"));
                 stg.setPrenom(rs.getString("prenom"));
                 stg.setNom(rs.getString("nom"));
-                stg.setProvenance(rs.getString("provenance"));
-                stg.setTel(rs.getString("telephone"));
                 stg.setSexe(rs.getString("sexe"));
-                stg.setSpecialite(rs.getString("specialite"));
-                stg.setStatut(rs.getString("statut"));
-                stg.setDestination(rs.getString("destination"));
+                stg.setTelephone(rs.getString("telephone"));
+                stg.setCompetance(rs.getString("competance"));
+                stg.setEmail(rs.getString("email"));
+                stg.setProfession(rs.getString("profession"));
+                stg.setFormation(rs.getString("formation"));
+                stg.setEcole(rs.getString("ecole"));
+                stg.setId_stage(rs.getInt("stage_id"));
                 obj.add(stg);
                 stg = new Stagiaire();
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(StagiaireDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return obj;
     }
 
-
-    
 }

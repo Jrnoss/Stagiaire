@@ -5,64 +5,68 @@
  */
 package beans;
 
+import java.util.Date;
+
 /**
  *
  * @author DELL
  */
 public class Stage {
-    private Long numero;
-    private String date_debut;
-     private String type;
+    private int id;
+    private String id_stage;
+    private String type_stage;
     private String theme;
     private String document;
-    private String date_fin;
+    private String path_file;
+    private Date date_debut;
+    private Date date_fin;
 
     public Stage() {
     }
 
-    public Stage(String date_debut, String type, String theme, String document, String alerte, String date_fin, String destination) {
-        this.date_debut = date_debut;
-        this.type = type;
+    public Stage(int id, String id_stage, String type_stage, String theme, String document, String path_file, Date date_debut, Date date_fin) {
+        this.id = id;
+        this.id_stage = id_stage;
+        this.type_stage = type_stage;
         this.theme = theme;
         this.document = document;
+        this.path_file = path_file;
+        this.date_debut = date_debut;
         this.date_fin = date_fin;
     }
 
-    public Stage(Long numero, String date_debut, String type, String theme, String document, String alerte, String date_fin, String destination) {
-        this.numero = numero;
-        this.date_debut = date_debut;
-        this.type = type;
+    public Stage(String id_stage, String type_stage, String theme, String document, String path_file, Date date_debut, Date date_fin) {
+        this.id_stage = id_stage;
+        this.type_stage = type_stage;
         this.theme = theme;
         this.document = document;
+        this.path_file = path_file;
+        this.date_debut = date_debut;
         this.date_fin = date_fin;
     }
 
-    public Stage(String date_debut, String type, String theme, String document, String date_fin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getId() {
+        return id;
     }
 
-    public Long getNumero() {
-        return numero;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setNumero(Long numero) {
-        this.numero = numero;
+    public String getId_stage() {
+        return id_stage;
     }
 
-    public String getDate_debut() {
-        return date_debut;
+    public void setId_stage(String id_stage) {
+        this.id_stage = id_stage;
     }
 
-    public void setDate_debut(String date_debut) {
-        this.date_debut = date_debut;
+    public String getType_stage() {
+        return type_stage;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setType_stage(String type_stage) {
+        this.type_stage = type_stage;
     }
 
     public String getTheme() {
@@ -81,22 +85,34 @@ public class Stage {
         this.document = document;
     }
 
-  
-    public String getDate_fin() {
+    public String getPath_file() {
+        return path_file;
+    }
+
+    public void setPath_file(String path_file) {
+        this.path_file = path_file;
+    }
+
+    public Date getDate_debut() {
+        return date_debut;
+    }
+
+    public void setDate_debut(Date date_debut) {
+        this.date_debut = date_debut;
+    }
+
+    public Date getDate_fin() {
         return date_fin;
     }
 
-    public void setDate_fin(String date_fin) {
+    public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
     }
 
-   
-
     @Override
     public String toString() {
-        return "Stage{" + "numero=" + numero + ", date_debut=" + date_debut + ", type=" + type + ", theme=" + theme + ", document=" + document + ", date_fin=" + date_fin + '}';
+        return "Stage{" + "id=" + id + ", id_stage=" + id_stage + ", type_stage=" + type_stage + ", theme=" + theme + ", document=" + document + ", path_file=" + path_file + ", date_debut=" + date_debut + ", date_fin=" + date_fin + '}';
     }
-    
-    
+
     
 }

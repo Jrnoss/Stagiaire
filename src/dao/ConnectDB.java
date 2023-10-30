@@ -16,9 +16,9 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class ConnectDB {
-    private static String url = "jdbc:mysql://localhost:3306/stage?zeroDateTimeBehavior=convertToNull";
+    private static String url = "jdbc:mysql://localhost:8889/stage";
     private static String user = "root";
-    private static String password = "";
+    private static String password = "root";
     private static Connection connect;
     
     public static Connection getInstance(){

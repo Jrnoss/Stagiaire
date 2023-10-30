@@ -5,6 +5,26 @@
  */
 package from_pages;
 
+import beans.Stage;
+import dao.StageDao;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author mackbook
@@ -16,6 +36,8 @@ public class Form_Stage extends javax.swing.JInternalFrame {
      */
     public Form_Stage() {
         initComponents();
+        txt_path.setVisible(false);
+        refreshList();
     }
 
     /**
@@ -45,6 +67,8 @@ public class Form_Stage extends javax.swing.JInternalFrame {
         btn_save = new javax.swing.JButton();
         btn_edit = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
+        btn_apercu = new javax.swing.JButton();
+        txt_path = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         liste_stages = new javax.swing.JTable();
@@ -95,23 +119,27 @@ public class Form_Stage extends javax.swing.JInternalFrame {
         txt_theme.setPreferredSize(new java.awt.Dimension(14, 28));
 
         txt_typeStage.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_typeStage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfectionnement", "Professionnel", "Fin d'étude                                                                                                                                                                                                                                                                                                  ", " " }));
+        txt_typeStage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "Perfectionnement", "Professionnel", "Fin-Etudes" }));
         txt_typeStage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
         txt_document.setEditable(false);
         txt_document.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_document.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
-        txt_document.setEnabled(false);
 
         btn_open.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/checkmark_16.png"))); // NOI18N
         btn_open.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        btn_open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_openActionPerformed(evt);
+            }
+        });
 
         txt_dateDebut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
-        txt_dateDebut.setDateFormatString("dd-M-yyyy");
+        txt_dateDebut.setDateFormatString("dd/MM/yyyy");
         txt_dateDebut.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         txt_dateFin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
-        txt_dateFin.setDateFormatString("dd-M-yyyy");
+        txt_dateFin.setDateFormatString("dd/MM/yyyy");
         txt_dateFin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btn_save.setBackground(new java.awt.Color(0, 51, 255));
@@ -122,6 +150,11 @@ public class Form_Stage extends javax.swing.JInternalFrame {
         btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_save.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_save.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_saveActionPerformed(evt);
+            }
+        });
 
         btn_edit.setBackground(new java.awt.Color(0, 153, 51));
         btn_edit.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -131,6 +164,11 @@ public class Form_Stage extends javax.swing.JInternalFrame {
         btn_edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_edit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_edit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editActionPerformed(evt);
+            }
+        });
 
         btn_delete.setBackground(new java.awt.Color(204, 0, 0));
         btn_delete.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -140,39 +178,64 @@ public class Form_Stage extends javax.swing.JInternalFrame {
         btn_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_delete.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_delete.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
+
+        btn_apercu.setBackground(new java.awt.Color(0, 204, 204));
+        btn_apercu.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_apercu.setForeground(new java.awt.Color(255, 255, 255));
+        btn_apercu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Aeye_16.png"))); // NOI18N
+        btn_apercu.setText("Aperçu");
+        btn_apercu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_apercu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_apercu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_apercu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_apercuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(txt_document)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(txt_document)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btn_open, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_typeStage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(date_debut)
+                                    .addComponent(date_fin))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_open, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_typeStage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(date_debut)
-                            .addComponent(date_fin))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_dateDebut, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_dateDebut, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_theme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_theme, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(txt_path, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_apercu)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_edit)
@@ -219,16 +282,19 @@ public class Form_Stage extends javax.swing.JInternalFrame {
                                 .addGap(8, 8, 8)
                                 .addComponent(date_fin)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_edit)
-                    .addComponent(btn_delete))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_save, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_edit)
+                        .addComponent(btn_delete)
+                        .addComponent(btn_apercu))
+                    .addComponent(txt_path, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_open, txt_dateDebut, txt_dateFin, txt_document, txt_theme, txt_typeStage});
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_delete, btn_edit, btn_save});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_apercu, btn_delete, btn_edit, btn_save});
 
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
@@ -239,18 +305,39 @@ public class Form_Stage extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Matricule", "Thématique", "Type de stage", "Document", "Date debut", "Date fin"
+                "id", "N°", "Identifiant", "Thématique", "Type de stage", "Document", "Date debut", "Date fin"
             }
         ));
         liste_stages.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         liste_stages.setGridColor(new java.awt.Color(102, 102, 102));
-        liste_stages.setRowMargin(2);
+        liste_stages.setRowHeight(20);
         liste_stages.setSelectionBackground(new java.awt.Color(0, 153, 255));
+        liste_stages.setShowGrid(true);
+        liste_stages.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                liste_stagesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(liste_stages);
         if (liste_stages.getColumnModel().getColumnCount() > 0) {
-            liste_stages.getColumnModel().getColumn(0).setMinWidth(65);
-            liste_stages.getColumnModel().getColumn(0).setPreferredWidth(75);
-            liste_stages.getColumnModel().getColumn(0).setMaxWidth(80);
+            liste_stages.getColumnModel().getColumn(0).setMinWidth(0);
+            liste_stages.getColumnModel().getColumn(0).setPreferredWidth(0);
+            liste_stages.getColumnModel().getColumn(0).setMaxWidth(0);
+            liste_stages.getColumnModel().getColumn(1).setMinWidth(20);
+            liste_stages.getColumnModel().getColumn(1).setPreferredWidth(30);
+            liste_stages.getColumnModel().getColumn(1).setMaxWidth(40);
+            liste_stages.getColumnModel().getColumn(2).setMinWidth(95);
+            liste_stages.getColumnModel().getColumn(2).setPreferredWidth(120);
+            liste_stages.getColumnModel().getColumn(2).setMaxWidth(130);
+            liste_stages.getColumnModel().getColumn(5).setMinWidth(0);
+            liste_stages.getColumnModel().getColumn(5).setPreferredWidth(0);
+            liste_stages.getColumnModel().getColumn(5).setMaxWidth(0);
+            liste_stages.getColumnModel().getColumn(6).setMinWidth(78);
+            liste_stages.getColumnModel().getColumn(6).setPreferredWidth(95);
+            liste_stages.getColumnModel().getColumn(6).setMaxWidth(97);
+            liste_stages.getColumnModel().getColumn(7).setMinWidth(78);
+            liste_stages.getColumnModel().getColumn(7).setPreferredWidth(95);
+            liste_stages.getColumnModel().getColumn(7).setMaxWidth(97);
         }
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -258,6 +345,11 @@ public class Form_Stage extends javax.swing.JInternalFrame {
 
         txt_search.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_search.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_searchKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -282,7 +374,7 @@ public class Form_Stage extends javax.swing.JInternalFrame {
                     .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -326,8 +418,147 @@ public class Form_Stage extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+        // TODO add your handling code here:
+        StageDao stagdao = new StageDao();
+        SimpleDateFormat dateToString = new SimpleDateFormat("yyyyHHmmss");
+        Date date = new Date();
+        String date_created = dateToString.format(date);
+        String theme = txt_theme.getText();
+        String type_stage = txt_typeStage.getSelectedItem().toString();
+        String document = txt_document.getText();
+        String path = txt_path.getText();
+        Date date_debut = txt_dateDebut.getDate();
+        Date date_fin = txt_dateFin.getDate();
+
+        if (theme.equals("") || type_stage.equals("---") || date_debut.equals("") || date_fin.equals("")) {
+            JOptionPane.showMessageDialog(this, "Ouf! svp renseigner les champs et ressayer encore!", "Erreur...", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            String matricule = theme.substring(0, 2) + "" + date_created.substring(0, 10);
+            //System.out.println("Matricule = "+matricule.toUpperCase());
+            Stage stage = new Stage(matricule.toUpperCase(), type_stage, theme, document, path, date_debut, date_fin);
+            stagdao.add(stage);
+            JOptionPane.showMessageDialog(this, "Opération éffectué avec succès!");
+            vider();
+            refreshList();
+        }
+    }//GEN-LAST:event_btn_saveActionPerformed
+
+    private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
+        // TODO add your handling code here:
+        StageDao stagdao = new StageDao();
+        SimpleDateFormat dateToString = new SimpleDateFormat("yyyyHHmmss");
+        int ind = liste_stages.getSelectedRow();
+        Date date = new Date();
+        String date_created = dateToString.format(date);
+        String theme = txt_theme.getText();
+        String type_stage = txt_typeStage.getSelectedItem().toString();
+        String document = txt_document.getText();
+        String path = txt_path.getText();
+        Date date_debut = txt_dateDebut.getDate();
+        Date date_fin = txt_dateFin.getDate();
+
+        if (theme.equals("") || type_stage.equals("---") || date_debut.equals("") || date_fin.equals("")) {
+            JOptionPane.showMessageDialog(this, "Ouf! svp renseigner les champs et ressayer encore!", "Erreur...", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            int idstage = (int) liste_stages.getValueAt(ind, 0);
+            String matricule = theme.substring(0, 2) + "" + date_created.substring(0, 10);
+            //System.out.println("Matricule = "+matricule.toUpperCase());
+            Stage stage = new Stage(matricule.toUpperCase(), type_stage, theme, document, path, date_debut, date_fin);
+            stagdao.edit(stage, idstage);
+            JOptionPane.showMessageDialog(this, "Opération éffectué avec succès!");
+            vider();
+            refreshList();
+        }
+    }//GEN-LAST:event_btn_editActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        // TODO add your handling code here:
+        int index = liste_stages.getSelectedRow();
+        int idstage = (int) liste_stages.getValueAt(index, 0);
+        if (idstage == -1) {
+            JOptionPane.showMessageDialog(this, "Opération non éffectué, selectionné dans la liste et ressayer encore!", "Erreur...", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer", "Attention", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                StageDao catdao = new StageDao();
+                catdao.delete(idstage);
+                JOptionPane.showMessageDialog(this, "Opération éffectué avec succès!");
+                vider();
+                refreshList();
+            }
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel mod = (DefaultTableModel) liste_stages.getModel();
+        TableRowSorter sort = new TableRowSorter(mod);
+        liste_stages.setRowSorter(sort);
+        String cherche = txt_search.getText();
+        sort.setRowFilter(RowFilter.regexFilter(cherche));
+    }//GEN-LAST:event_txt_searchKeyReleased
+
+    private void liste_stagesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_liste_stagesMouseClicked
+        // TODO add your handling code here:
+        int id = liste_stages.getSelectedRow();
+        int id_stage = (int) liste_stages.getValueAt(id, 0);
+
+        StageDao stagedao = new StageDao();
+        Stage stage = stagedao.find(id_stage);
+        if (stage != null) {
+            txt_theme.setText(stage.getTheme());
+            txt_typeStage.setSelectedItem(stage.getType_stage());
+            txt_dateDebut.setDate(stage.getDate_debut());
+            txt_dateFin.setDate(stage.getDate_fin());
+            txt_document.setText(stage.getDocument());
+            txt_path.setText(stage.getPath_file());
+        }
+    }//GEN-LAST:event_liste_stagesMouseClicked
+
+    private void btn_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_openActionPerformed
+        // TODO add your handling code here:
+        JFileChooser jfile = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        jfile.setDialogTitle("Selectionner un fichier");
+        jfile.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Type de fichier (pdf, zip, word, excel)", "docx", "xlsx", "pdf", "zip");
+        jfile.addChoosableFileFilter(filter);
+
+        int returnValue = jfile.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = jfile.getSelectedFile();
+            txt_path.setText(selectedFile.getAbsolutePath());
+            txt_document.setText(selectedFile.getName());
+        }
+    }//GEN-LAST:event_btn_openActionPerformed
+
+    private void btn_apercuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apercuActionPerformed
+        // TODO add your handling code here:
+        try {
+            String filePath = txt_path.getText();
+            File pdfFile = new File(filePath);
+            if (pdfFile.exists()) {
+                if (Desktop.isDesktopSupported()) {
+
+                    Desktop.getDesktop().open(pdfFile);
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Le format n'est pas correcte!", "Erreur...", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Le fichier n'existe pas!", "Erreur...", JOptionPane.ERROR_MESSAGE);
+            }
+            //JOptionPane.showMessageDialog(this, "Effectuer!");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }//GEN-LAST:event_btn_apercuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_apercu;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_open;
@@ -348,8 +579,54 @@ public class Form_Stage extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser txt_dateDebut;
     private com.toedter.calendar.JDateChooser txt_dateFin;
     private javax.swing.JTextField txt_document;
+    private javax.swing.JLabel txt_path;
     private javax.swing.JTextField txt_search;
     private javax.swing.JTextField txt_theme;
     private javax.swing.JComboBox<String> txt_typeStage;
     // End of variables declaration//GEN-END:variables
+
+    private void vider() {
+        txt_theme.setText("");
+        txt_typeStage.setSelectedItem("---");
+        txt_dateDebut.setDate(null);
+        txt_dateFin.setDate(null);
+        txt_document.setText("");
+        DefaultTableModel mod = (DefaultTableModel) liste_stages.getModel();
+        int n = mod.getRowCount();
+        for (int i = n - 1; i >= 0; i--) {
+            mod.removeRow(i);
+        }
+    }
+
+    private void refreshList() {
+        SimpleDateFormat jma = new SimpleDateFormat("dd-MM-yyyy");
+        StageDao stagdao = new StageDao();
+        List<Stage> stage = stagdao.liste();
+        int i;
+        if (stage.size() > 0) {
+            for (i = 0; i < stage.size(); i++) {
+                ((DefaultTableModel) liste_stages.getModel()).addRow(new Object[]{
+                    stage.get(i).getId(),
+                    i + 1,
+                    stage.get(i).getId_stage(),
+                    stage.get(i).getTheme(),
+                    stage.get(i).getType_stage(),
+                    stage.get(i).getDocument(),
+                    jma.format(stage.get(i).getDate_debut()),
+                    jma.format(stage.get(i).getDate_fin()),});
+            }
+        }
+        /*for (i = 0; i < stage.size(); i++) {
+            ((DefaultTableModel) liste_stages.getModel()).addRow(new Object[]{
+                i + 1,
+                stage.get(i).getId_stage(),
+                stage.get(i).getTheme(),
+                stage.get(i).getType_stage(),
+                stage.get(i).getDocument(),
+                stage.get(i).getDate_debut(),
+                stage.get(i).getDate_fin(),
+                stage.get(i).getId(),
+            });
+        }*/
+    }
 }
