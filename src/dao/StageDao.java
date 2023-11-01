@@ -46,7 +46,7 @@ public class StageDao extends DAO<Stage> {
     @Override
     public void add(Stage obj) {
         try {
-            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO stage(id_stage, theme, type_stage, document, path_file, date_debut, date_fin) VALUES (?,?,?,?,?,?)");
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO stage(id_stage, theme, type_stage, document, path_file, date_debut, date_fin) VALUES (?,?,?,?,?,?,?)");
             ps.setString(1, obj.getId_stage());
             ps.setString(2, obj.getTheme());
             ps.setString(3, obj.getType_stage());
