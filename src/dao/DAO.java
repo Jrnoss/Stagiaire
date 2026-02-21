@@ -21,3 +21,5 @@ public abstract class DAO <S> {
     public abstract void delete(long id);
     public abstract List<S> liste();
 }
+
+ 

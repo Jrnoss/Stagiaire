@@ -10,7 +10,8 @@ package beans;
  * @author DELL
  */
 public class Tuteur {
-    private Long id;
+    private int id;
+    private String id_tuteur;
     private String nomcomplet;
     private String adresse;
     private String telephone;
@@ -19,27 +20,37 @@ public class Tuteur {
     public Tuteur() {
     }
 
-    public Tuteur(String nomcomplet, String adresse, String telephone, String statut) {
-        this.nomcomplet = nomcomplet;
-        this.adresse = adresse;
-        this.telephone = telephone;
-        this.statut = statut;
-    }
-
-    public Tuteur(Long id, String nomcomplet, String adresse, String telephone, String statut) {
+    public Tuteur(int id, String id_tuteur, String nomcomplet, String adresse, String telephone, String statut) {
         this.id = id;
+        this.id_tuteur = id_tuteur;
         this.nomcomplet = nomcomplet;
         this.adresse = adresse;
         this.telephone = telephone;
         this.statut = statut;
     }
 
-    public Long getId() {
+    public Tuteur(String id_tuteur, String nomcomplet, String adresse, String telephone, String statut) {
+        this.id_tuteur = id_tuteur;
+        this.nomcomplet = nomcomplet;
+        this.adresse = adresse;
+        this.telephone = telephone;
+        this.statut = statut;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getId_tuteur() {
+        return id_tuteur;
+    }
+
+    public void setId_tuteur(String id_tuteur) {
+        this.id_tuteur = id_tuteur;
     }
 
     public String getNomcomplet() {
@@ -76,7 +87,12 @@ public class Tuteur {
 
     @Override
     public String toString() {
-        return "Tuteur{" + "id=" + id + ", nomcomplet=" + nomcomplet  + ", adresse=" + adresse + ", telephone=" + telephone + ", statut=" + statut + '}';
+        return "Tuteur{" + "id=" + id + ", id_tuteur=" + id_tuteur + ", nomcomplet=" + nomcomplet + ", adresse=" + adresse + ", telephone=" + telephone + ", statut=" + statut + '}';
     }
+
+   
+
+  
+   
     
 }

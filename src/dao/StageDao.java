@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,14 +29,15 @@ public class StageDao extends DAO<Stage> {
         try {
             ResultSet rs = this.connect.createStatement().executeQuery("select * from stage where id=" + id);
             if (rs.next()) {
-                st.setId(rs.getInt("id"));
+                st.setId(rs.getLong("id"));
                 st.setId_stage(rs.getString("id_stage"));
                 st.setTheme(rs.getString("theme"));
                 st.setType_stage(rs.getString("type_stage"));
                 st.setDocument(rs.getString("document"));
-                st.setPath_file(rs.getString("path_file"));
+                st.setPath_file(rs.getString("path_file")); 
                 st.setDate_debut(rs.getDate("date_debut"));
                 st.setDate_fin(rs.getDate("date_fin"));
+                st.setId_stagiaire(rs.getInt("id_stagiaire"));
             }
 
         } catch (Exception ex) {
@@ -46,7 +48,7 @@ public class StageDao extends DAO<Stage> {
     @Override
     public void add(Stage obj) {
         try {
-            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO stage(id_stage, theme, type_stage, document, path_file, date_debut, date_fin) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO stage(id_stage, theme, type_stage, document, path_file, date_debut, date_fin, id_stagiaire) VALUES (?,?,?,?,?,?,?,?)");
             ps.setString(1, obj.getId_stage());
             ps.setString(2, obj.getTheme());
             ps.setString(3, obj.getType_stage());
@@ -54,6 +56,7 @@ public class StageDao extends DAO<Stage> {
             ps.setString(5, obj.getPath_file());
             ps.setString(6, amj.format(obj.getDate_debut()));
             ps.setString(7, amj.format(obj.getDate_fin()));
+            ps.setInt(8, obj.getId_stagiaire());
             ps.execute();
 
         } catch (Exception ex) {
@@ -64,7 +67,8 @@ public class StageDao extends DAO<Stage> {
     @Override
     public void edit(Stage obj, long id) {
         try {
-            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("update stage set id_stage=?, theme=?, type_stage=?, document=?, path_file=?, date_debut=?, date_fin=? where id=" + id);
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("update stage set id_stage=?, theme=?, type_stage=?, "
+                    + "document=?, path_file=?, date_debut=?, date_fin=?,id_stagiaire=? where id=" + id);
             ps.setString(1, obj.getId_stage());
             ps.setString(2, obj.getTheme());
             ps.setString(3, obj.getType_stage());
@@ -72,6 +76,7 @@ public class StageDao extends DAO<Stage> {
             ps.setString(5, obj.getPath_file());
             ps.setString(6, amj.format(obj.getDate_debut()));
             ps.setString(7, amj.format(obj.getDate_fin()));
+            ps.setInt(8,obj.getId_stagiaire());
             ps.execute();
         } catch (Exception ex) {
             Logger.getLogger(StageDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,9 +100,9 @@ public class StageDao extends DAO<Stage> {
         List<Stage> obj = new ArrayList<>();
         try {
 
-            ResultSet rs = this.connect.createStatement().executeQuery("select * from stage");
+            ResultSet rs = this.connect.createStatement().executeQuery("select * from stage order by id asc");
             while (rs.next()) {
-                st.setId(rs.getInt("id"));
+                st.setId(rs.getLong("id"));
                 st.setId_stage(rs.getString("id_stage"));
                 st.setTheme(rs.getString("theme"));
                 st.setType_stage(rs.getString("type_stage"));
@@ -105,6 +110,7 @@ public class StageDao extends DAO<Stage> {
                 st.setPath_file(rs.getString("path_file"));
                 st.setDate_debut(rs.getDate("date_debut"));
                 st.setDate_fin(rs.getDate("date_fin"));
+                st.setId_stagiaire(rs.getInt("id_stagiaire"));
                 obj.add(st);
                 st = new Stage();
             }

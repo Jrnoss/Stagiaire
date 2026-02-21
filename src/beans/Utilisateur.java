@@ -13,52 +13,45 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author DELL
  */
 public class Utilisateur {
-    private Integer id;
-    private String prenom;
+    private Long iduser;
     private String nom;
     private String telephone;
-    private String email;
+    private String adresse;
+    private String login;
     private String password;
+    private String secret;
+    private String role;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(Integer id) {
-        this.id = id;
-    }
-
-    public Utilisateur(String prenom, String nom, String telephone, String email, String password) {
-        this.prenom = prenom;
+    public Utilisateur(String nom, String telephone, String adresse, String login, String password, String secret, String role) {
         this.nom = nom;
         this.telephone = telephone;
-        this.email = email;
+        this.adresse = adresse;
+        this.login = login;
         this.password = password;
+        this.secret = secret;
+        this.role = role;
     }
 
-    
-    public Utilisateur(Integer id, String prenom, String nom, String telephone, String email, String password) {
-        this.id = id;
-        this.prenom = prenom;
+    public Utilisateur(Long iduser, String nom, String telephone, String adresse, String login, String password, String secret, String role) {
+        this.iduser = iduser;
         this.nom = nom;
         this.telephone = telephone;
-        this.email = email;
+        this.adresse = adresse;
+        this.login = login;
         this.password = password;
+        this.secret = secret;
+        this.role = role;
     }
 
-    public Integer getId() {
-        return id;
+    public Long getIduser() {
+        return iduser;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setIduser(Long iduser) {
+        this.iduser = iduser;
     }
 
     public String getNom() {
@@ -77,12 +70,20 @@ public class Utilisateur {
         this.telephone = telephone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -93,29 +94,30 @@ public class Utilisateur {
         this.password = password;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public String getSecret() {
+        return secret;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Utilisateur)) {
-            return false;
-        }
-        Utilisateur other = (Utilisateur) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+   
 
     @Override
     public String toString() {
-        return "beans.Utisateur[ id=" + id + " ]";
+        return "Utilisateur{" + "iduser=" + iduser + ", nom=" + nom + ", telephone=" + telephone + ", adresse=" + adresse + ", login=" + login + ", password=" + password + ", secret=" + secret + ", role=" + role + "}";
     }
+
+  
+
     
 }

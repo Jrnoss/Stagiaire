@@ -18,24 +18,25 @@ import java.util.logging.Logger;
  *
  * @author DELL
  */
-public class EncadreurDao extends DAO<Encadreur>{
+public class EncadreurDao extends DAO<Encadreur> {
 
     @Override
     public Encadreur find(long id) {
-    Encadreur enc = new Encadreur();
+        Encadreur enc = new Encadreur();
         try {
-            ResultSet rs = this.connect.createStatement().executeQuery("select * from Stagiaire where id=" +id);
-            if(rs.next()){
+            ResultSet rs = this.connect.createStatement().executeQuery("select * from encadreur where id=" + id);
+            if (rs.next()) {
                 enc.setId(rs.getLong("id"));
+                enc.setMatricule(rs.getString("id_encadreur"));
                 enc.setNom(rs.getString("nom"));
-                enc.setPreom(rs.getString("prenom"));
+                enc.setPrenom(rs.getString("prenom"));
                 enc.setSexe(rs.getString("sexe"));
                 enc.setTel(rs.getString("telephone"));
                 enc.setAdresse(rs.getString("adresse"));
                 enc.setEmail(rs.getString("email"));
                 enc.setStatut(rs.getString("statut"));
             }
-            
+
         } catch (SQLException ex) {
         }
         return enc;
@@ -44,16 +45,17 @@ public class EncadreurDao extends DAO<Encadreur>{
     @Override
     public void add(Encadreur obj) {
         try {
-            PreparedStatement ps = (PreparedStatement)this.connect.prepareStatement("INSERT INTO Encadreur (nom,prenom,sexe,telephone,adresse,email,statut) VALUES(?,?,?,?,?,?,?");
-            ps.setString(1, obj.getPreom());
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO encadreur (id_encadreur,nom,prenom,telephone,sexe,adresse,email,statut) VALUES(?,?,?,?,?,?,?,?)");
+            ps.setString(1, obj.getMatricule());
             ps.setString(2, obj.getNom());
-            ps.setString(4, obj.getSexe());
-            ps.setString(3, obj.getTel());
-            ps.setString(6, obj.getEmail());
-            ps.setString(7, obj.getStatut());
+            ps.setString(3, obj.getPrenom());
+            ps.setString(4, obj.getTel());
+            ps.setString(5, obj.getSexe());
+            ps.setString(6, obj.getAdresse());
+            ps.setString(7, obj.getEmail());
+            ps.setString(8, obj.getStatut());
             ps.execute();
-           
-                    
+
         } catch (Exception ex) {
             Logger.getLogger(EncadreurDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -62,16 +64,18 @@ public class EncadreurDao extends DAO<Encadreur>{
     @Override
     public void edit(Encadreur obj, long id) {
         try {
-            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("update encadreur set nom=?," + " prenom=?,"
-                    + " telephone=?,sexe=?, adresse=?, email=?, statut=? where id= " +id );
-            ps.setString(1, obj.getPreom());
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("update encadreur set id_encadreur=?,"
+                    + "nom=?, prenom=?, telephone=?,sexe=?, adresse=?, email=?, statut=? where id= " + id);
+            ps.setString(1, obj.getMatricule());
             ps.setString(2, obj.getNom());
-            ps.setString(3, obj.getSexe());
+            ps.setString(3, obj.getPrenom());
             ps.setString(4, obj.getTel());
-            ps.setString(5, obj.getAdresse());
-            ps.setString(6, obj.getStatut());
+            ps.setString(5, obj.getSexe());
+            ps.setString(6, obj.getAdresse());
+            ps.setString(7, obj.getEmail());
+            ps.setString(8, obj.getStatut());
             ps.execute();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(EncadreurDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,7 +84,8 @@ public class EncadreurDao extends DAO<Encadreur>{
     @Override
     public void delete(long id) {
         try {
-                PreparedStatement ps = (PreparedStatement)this.connect.prepareStatement("delete from Encadreur where id="+ id);
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("delete from Encadreur where id=" + id);
+            ps.execute();
 
         } catch (Exception ex) {
             Logger.getLogger(EncadreurDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,22 +97,38 @@ public class EncadreurDao extends DAO<Encadreur>{
         Encadreur enc = new Encadreur();
         List<Encadreur> obj = new ArrayList<>();
         try {
-            ResultSet rs = this.connect.createStatement().executeQuery("select * from Encadreur order by asc");
-            while(rs.next()){
-            enc.setPreom(rs.getString(""));
-            enc.setNom(rs.getString("nom"));
-            enc.setSexe(rs.getString("sexe"));
-            enc.setTel(rs.getString("telephone"));
-            enc.setEmail(rs.getString("email"));
-            enc.setStatut(rs.getString("statut"));
-            obj.add(enc);
-            enc = new Encadreur();
+            ResultSet rs = this.connect.createStatement().executeQuery("select * from encadreur order by id asc");
+            while (rs.next()) {
+                enc.setId(rs.getLong("id"));
+                enc.setPrenom(rs.getString("prenom"));
+                enc.setNom(rs.getString("nom"));
+                enc.setSexe(rs.getString("sexe"));
+                enc.setTel(rs.getString("telephone"));
+                enc.setAdresse(rs.getString("adresse"));
+                enc.setEmail(rs.getString("email"));
+                enc.setStatut(rs.getString("statut"));
+                enc.setMatricule(rs.getString("id_encadreur"));
+                obj.add(enc);
+                enc = new Encadreur();
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(EncadreurDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return obj;
+        
     }
-    
+     public int getEncId(String nom) {
+        int id = 0;
+        try {
+            ResultSet resultat = this.connect.createStatement().executeQuery("Select * from encadreur where id_encadreur='" + nom + "'");
+            if (resultat.next()) {
+                id = resultat.getInt("id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StageDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+
 }

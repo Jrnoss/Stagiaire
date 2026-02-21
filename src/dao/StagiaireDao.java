@@ -37,7 +37,9 @@ public class StagiaireDao extends DAO<Stagiaire> {
                 stg.setProfession(rs.getString("profession"));
                 stg.setFormation(rs.getString("formation"));
                 stg.setEcole(rs.getString("ecole"));
-                stg.setId_stage(rs.getInt("stage_id"));
+                stg.setId_encadreur(rs.getInt("id_encadreur"));
+                stg.setId_tuteur(rs.getInt("id_tuteur"));
+//                stg.setId_stage(rs.getInt("stage_id"));
 
             }
         } catch (SQLException ex) {
@@ -48,18 +50,21 @@ public class StagiaireDao extends DAO<Stagiaire> {
     @Override
     public void add(Stagiaire obj) {
         try {
-            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO stagiaire(matricule, prenom, nom, sexe, telephone, competance, email, profession, formation, ecole, stage_id)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("INSERT INTO stagiaire(matricule, nom, prenom, "
+                    + "telephone,sexe,competance,email,profession,formation,ecole,id_encadreur,id_tuteur)VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, obj.getMatricule());
-            ps.setString(2, obj.getPrenom());
-            ps.setString(3, obj.getNom());
-            ps.setString(4, obj.getSexe());
-            ps.setString(5, obj.getTelephone());
+            ps.setString(2, obj.getNom());
+            ps.setString(3, obj.getPrenom());
+            ps.setString(4, obj.getTelephone());
+            ps.setString(5, obj.getSexe());
             ps.setString(6, obj.getCompetance());
             ps.setString(7, obj.getEmail());
             ps.setString(8, obj.getProfession());
             ps.setString(9, obj.getFormation());
             ps.setString(10, obj.getEcole());
-            ps.setInt(11, obj.getId_stage());
+            ps.setInt(11, obj.getId_encadreur());
+            ps.setInt(12, obj.getId_tuteur());
+//            ps.setInt(11, obj.getId_stage());
             ps.execute();
         } catch (Exception ex) {
             Logger.getLogger(StagiaireDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,11 +74,11 @@ public class StagiaireDao extends DAO<Stagiaire> {
     @Override
     public void edit(Stagiaire obj, long id) {
         try {
-            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("update stagiaire set matricule=?, prenom=?, nom=?, sexe=?,"
-                    + " telephone=?, competance=?, email=?, profession=?, formation=?, ecole=?, stage_id=? where id =" + id);
+            PreparedStatement ps = (PreparedStatement) this.connect.prepareStatement("update stagiaire set matricule=?, nom=?, prenom=?, sexe=?,"
+                    + " telephone=?,competance=?,email=?,profession=?,formation=?,ecole=?,id_encadreur=?,id_tuteur=? where id =" + id);
             ps.setString(1, obj.getMatricule());
-            ps.setString(2, obj.getPrenom());
-            ps.setString(3, obj.getNom());
+            ps.setString(2, obj.getNom());
+            ps.setString(3, obj.getPrenom());
             ps.setString(4, obj.getSexe());
             ps.setString(5, obj.getTelephone());
             ps.setString(6, obj.getCompetance());
@@ -81,7 +86,9 @@ public class StagiaireDao extends DAO<Stagiaire> {
             ps.setString(8, obj.getProfession());
             ps.setString(9, obj.getFormation());
             ps.setString(10, obj.getEcole());
-            ps.setInt(11, obj.getId_stage());
+            ps.setInt(11, obj.getId_encadreur());
+            ps.setInt(12, obj.getId_tuteur());
+//            ps.setInt(11, obj.getId_stage());
             ps.execute();
 
         } catch (Exception ex) {
@@ -104,7 +111,7 @@ public class StagiaireDao extends DAO<Stagiaire> {
         Stagiaire stg = new Stagiaire();
         List<Stagiaire> obj = new ArrayList<>();
         try {
-            ResultSet rs = this.connect.createStatement().executeQuery("select * from stagiaire order by matricule asc");
+            ResultSet rs = this.connect.createStatement().executeQuery("select * from stagiaire order by id asc");
             while (rs.next()) {
                 stg.setId(rs.getInt("id"));
                 stg.setMatricule(rs.getString("matricule"));
@@ -117,7 +124,9 @@ public class StagiaireDao extends DAO<Stagiaire> {
                 stg.setProfession(rs.getString("profession"));
                 stg.setFormation(rs.getString("formation"));
                 stg.setEcole(rs.getString("ecole"));
-                stg.setId_stage(rs.getInt("stage_id"));
+                stg.setId_encadreur(rs.getInt("id_encadreur"));
+                stg.setId_tuteur(rs.getInt("id_tuteur"));
+//                stg.setId_stage(rs.getInt("stage_id"));
                 obj.add(stg);
                 stg = new Stagiaire();
             }
@@ -127,5 +136,19 @@ public class StagiaireDao extends DAO<Stagiaire> {
         }
         return obj;
     }
-
+    
+    public int getstagiaire(String id_stagiaire){
+     int id = 0;
+        try {
+            ResultSet resultat = this.connect.createStatement().executeQuery("Select * from stagiaire where matricule='" + id_stagiaire + "'");
+            if (resultat.next()) {
+                id = resultat.getInt("id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StagiaireDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+   
+  
 }

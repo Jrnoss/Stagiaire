@@ -21,14 +21,15 @@ public class Stagiaire {
     private String email;
     private String profession;
     private String formation;
-    private String ecole; 
-    private int id_stage;
-    
+    private String ecole;
+    private int id_encadreur;
+    private int id_tuteur;
+   
 
     public Stagiaire() {
     }
 
-    public Stagiaire(int id, String matricule, String prenom, String nom, String sexe, String telephone, String competance, String email, String profession, String formation, String ecole, int id_stage) {
+    public Stagiaire(int id, String matricule, String prenom, String nom, String sexe, String telephone, String competance, String email, String profession, String formation, String ecole, int id_encadreur, int id_tuteur) {
         this.id = id;
         this.matricule = matricule;
         this.prenom = prenom;
@@ -40,10 +41,11 @@ public class Stagiaire {
         this.profession = profession;
         this.formation = formation;
         this.ecole = ecole;
-        this.id_stage = id_stage;
+        this.id_encadreur = id_encadreur;
+        this.id_tuteur = id_tuteur;
     }
 
-    public Stagiaire(String matricule, String prenom, String nom, String sexe, String telephone, String competance, String email, String profession, String formation, String ecole, int id_stage) {
+    public Stagiaire(String matricule, String prenom, String nom, String sexe, String telephone, String competance, String email, String profession, String formation, String ecole, int id_encadreur, int id_tuteur) {
         this.matricule = matricule;
         this.prenom = prenom;
         this.nom = nom;
@@ -54,7 +56,8 @@ public class Stagiaire {
         this.profession = profession;
         this.formation = formation;
         this.ecole = ecole;
-        this.id_stage = id_stage;
+        this.id_encadreur = id_encadreur;
+        this.id_tuteur = id_tuteur;
     }
 
     public int getId() {
@@ -145,18 +148,29 @@ public class Stagiaire {
         this.ecole = ecole;
     }
 
-    public int getId_stage() {
-        return id_stage;
+    public int getId_encadreur() {
+        return id_encadreur;
     }
 
-    public void setId_stage(int id_stage) {
-        this.id_stage = id_stage;
+    public void setId_encadreur(int id_encadreur) {
+        this.id_encadreur = id_encadreur;
+    }
+
+    public int getId_tuteur() {
+        return id_tuteur;
+    }
+
+    public void setId_tuteur(int id_tuteur) {
+        this.id_tuteur = id_tuteur;
     }
 
     @Override
     public String toString() {
-        return "Stagiaire{" + "id=" + id + ", matricule=" + matricule + ", prenom=" + prenom + ", nom=" + nom + ", sexe=" + sexe + ", telephone=" + telephone + ", competance=" + competance + ", email=" + email + ", profession=" + profession + ", formation=" + formation + ", ecole=" + ecole + ", id_stage=" + id_stage + '}';
+        return "Stagiaire{" + "id=" + id + ", matricule=" + matricule + ", prenom=" + prenom + ", nom=" + nom + ", sexe=" + sexe + ", telephone=" + telephone + ", competance=" + competance + ", email=" + email + ", profession=" + profession + ", formation=" + formation + ", ecole=" + ecole + ", id_encadreur=" + id_encadreur + ", id_tuteur=" + id_tuteur + '}';
     }
+
+   
+
 
     
 }
